@@ -2,6 +2,9 @@
 
 Script to install monitoring agent with Node exporter & promtail
 
+## PACKAGE VERSION
+- node_exporter-1.3.1
+- promtail : latest
 
 Gitclone
 ```
