@@ -7,7 +7,6 @@ sudo useradd -rs /bin/false node_exporter
 echo "################ Move SystemD & Restart Service Node_exporter.service ################"
 mv node_exporter.service /etc/systemd/system/node_exporter.service
 sudo systemctl daemon-reload && sudo systemctl enable --now node_exporter.service 
-sudo systemctl status node_exporter.service
 echo "################ Test Curl Node Exporter ################"
 curl localhost:9100
 echo "################ Instal Package Promtail ################"
@@ -20,4 +19,16 @@ echo "################ Move SystemD &Restart Service promtail.service ##########
 mv promtail.yaml /etc/promtail/promtail.yaml
 mv promtail.service /etc/systemd/system/promtail.service
 sudo systemctl daemon-reload && sudo systemctl enable --now promtail.service
-sudo systemctl status promtail.service
+echo "################ Check Service promtail & node_exporter ################"
+STATUS1="$(systemctl is-active node_exporter.service)"
+STATUS2="$(systemctl is-active promtail.service)"
+if [ "${STATUS1}" = "active" ]; then
+    echo "Service node_exporter = Active"
+else 
+    echo "Service node_exporter not running.... Please Check Your Config "   
+fi
+if [ "${STATUS2}" = "active" ]; then
+    echo "Service promtail = Active"
+else 
+    echo "Service promtail not running.... Please Check Your Config "  
+fi
