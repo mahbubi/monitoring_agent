@@ -2,7 +2,8 @@
 Description=Node Exporter 
 After=network.target 
  
-[Service] 
+[Service]
+Environment=GOMAXPROCS=1
 User=node_exporter 
 Group=node_exporter 
 Type=simple 
