@@ -16,5 +16,5 @@ chmod +x installer.sh
 ```
 run script.
 ```
-./Installer.sh
+./installer.sh
 ```
