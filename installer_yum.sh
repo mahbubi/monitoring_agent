@@ -13,7 +13,7 @@ echo "################ Instal Package Promtail ################"
 curl -s https://api.github.com/repos/grafana/loki/releases/latest | grep browser_download_url |  cut -d '"' -f 4 | grep promtail-linux-amd64.zip | wget -i -  
 sudo yum install unzip && unzip promtail-linux-amd64.zip 
 sudo mv promtail-linux-amd64 promtail
-sudo cp promtail /usr/local/bin
+sudo cp promtail /usr/local/bin/
 sudo mkdir -p /etc/promtail
 echo "################ Instal Package Promtail DONE ################ "
 echo "################ Move SystemD &Restart Service promtail.service ################"
