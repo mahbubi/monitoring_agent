@@ -8,7 +8,9 @@ sudo useradd -rs /bin/false node_exporter
 echo "################ Instal Package node_exporte DONE################ "
 echo "################ Move SystemD & Restart Service Node_exporter.service ################"
 mv node_exporter.service /etc/systemd/system/node_exporter.service
-sudo systemctl daemon-reload && sudo systemctl enable --now node_exporter.service 
+sudo systemctl daemon-reload
+sudo systemctl enable --now node_exporter.service 
+sudo systemctl restart node_exporter.service 
 echo "################ Move SystemD & Restart Service Node_exporter.service DONE ################ "
 echo "################ Instal Package Promtail ################"
 curl -s https://api.github.com/repos/grafana/loki/releases/latest | grep browser_download_url |  cut -d '"' -f 4 | grep promtail-linux-amd64.zip | wget -i -  
@@ -20,7 +22,9 @@ echo "################ Instal Package Promtail DONE ################ "
 echo "################ Move SystemD &Restart Service promtail.service ################"
 mv promtail.yaml /etc/promtail/promtail.yaml
 mv promtail.service /etc/systemd/system/promtail.service
-sudo systemctl daemon-reload && sudo systemctl enable --now promtail.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now promtail.service
+sudo systemctl restart promtail.service
 echo "################ Move SystemD &Restart Service promtail.service DONE ################ "
 echo "################ Check Service promtail & node_exporter ################"
 STATUS1="$(systemctl is-active node_exporter.service)"
