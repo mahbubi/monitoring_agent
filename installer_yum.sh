@@ -42,4 +42,3 @@ else
 fi
 echo "################ Test Curl Node Exporter ################"
 curl localhost:9100
-echo "################ Test Curl Node Exporter DONE ################ 
